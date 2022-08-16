@@ -17,6 +17,8 @@ class ViewController: UIViewController {
 		UIImage(imageLiteralResourceName: "ball3"),
 		UIImage(imageLiteralResourceName: "ball4")
 	]
+	
+	var ballNumber = -1
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -24,7 +26,14 @@ class ViewController: UIViewController {
 	}
 
 	@IBAction func answerButtonPressed(_ sender: UIButton) {
-		imageView.image = ballArray.randomElement()!
+		
+		var newBallNumber = Int.random(in: 0...3)
+		
+		while ballNumber == newBallNumber {
+			newBallNumber = Int.random(in: 0...3)
+		}
+		ballNumber = newBallNumber
+		imageView.image = ballArray[ballNumber]
 	}
 	
 }
